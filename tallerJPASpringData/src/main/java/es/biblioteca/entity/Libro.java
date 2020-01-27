@@ -1,8 +1,14 @@
 package es.biblioteca.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -41,19 +47,21 @@ public class Libro {
     /**
      * Categoria ID.
      */
-    @ManyToOne
-    @JoinColumn(name = "categoria")
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Categoria categoria;
 
     /**
-     * Autor ID.
+     * Autores.
      */
-    @ManyToOne
-    @JoinColumn(name = "autor")
-    private Autor autor;
+    @ManyToMany
+    @JoinTable(name = "autor_libro",
+    		   joinColumns = @JoinColumn(name = "libro_id"),
+    		   inverseJoinColumns = @JoinColumn(name = "autor_id")
+    		  )
+    private List<Autor> autores;
 
     /**
-     * Editorial ID.
+     * Editorial.
      */
     @ManyToOne
     @JoinColumn(name = "editorial")

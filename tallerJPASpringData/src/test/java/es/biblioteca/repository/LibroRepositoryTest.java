@@ -12,10 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.data.domain.Example;
 
-import es.biblioteca.entity.Autor;
+import es.biblioteca.entity.Categoria;
 import es.biblioteca.entity.Libro;
+import lombok.extern.slf4j.Slf4j;
 
 @DataJpaTest
+@Slf4j
 @DisplayName("JUnit Test unitario repositorio Libro")
 public class LibroRepositoryTest {
 
@@ -29,7 +31,7 @@ public class LibroRepositoryTest {
 
 		  List<Libro> libros = libroRepository.findAll();
 
-		  assertEquals(libros.size(),24);
+		  assertEquals(libros.size(),26);
 	}
 
 
@@ -65,7 +67,7 @@ public class LibroRepositoryTest {
 	@Test
 	@DisplayName("Test unitario buscar libros nombre de autor")
 	public void testFindLibrosNombreAutor() {
-		  List<Libro> libros = libroRepository.findByAutor_nombre("Ken Follett");
+		  List<Libro> libros = libroRepository.findByAutores_nombre("Ken Follett");
 
 		  assertEquals(libros.size(),3);
 
@@ -74,7 +76,7 @@ public class LibroRepositoryTest {
 	@Test
 	@DisplayName("Test unitario buscar libros nombre de autor Ignore Case")
 	public void testFindLibrosNombreAutorIgnoreCase() {
-		  List<Libro> libros = libroRepository.findByAutor_nombreIgnoreCase("ken follett");
+		  List<Libro> libros = libroRepository.findByAutores_nombreIgnoreCase("ken follett");
 
 		  assertEquals(libros.size(),3);
 
@@ -83,7 +85,7 @@ public class LibroRepositoryTest {
 	@Test
 	@DisplayName("Test unitario buscar libros id de autor")
 	public void testFindLibrosIdAutor() {
-		  List<Libro> libros = libroRepository.findByAutor_id(1);
+		  List<Libro> libros = libroRepository.findByAutores_id(1);
 
 		  assertEquals(libros.size(),3);
 
@@ -91,13 +93,13 @@ public class LibroRepositoryTest {
 
 	@Test
 	@DisplayName("Test unitario buscar libros nombre de autor y categoria")
-	public void testFindLibrosNombreAutorCateforia() {
-		  List<Libro> libros = libroRepository.findByAutor_nombreAndCategoria_nombre("Ken Follett", "Ficción Histórica");
-
+	public void testFindLibrosNombreAutorCategoria() {
+		  List<Libro> libros = libroRepository.findByAutores_nombreAndCategoria_nombre("Ken Follett", "Ficcion Historica");
+		  log.debug("Libros de Ken Follet de Ficción Histórica:" + libros.size());
 		  assertEquals(libros.size(),3);
 
-		  libros = libroRepository.findByAutor_nombreAndCategoria_nombre("Ken Follett", "Terror");
-
+		  libros = libroRepository.findByAutores_nombreAndCategoria_nombre("Ken Follett", "Terror");
+		  log.debug("Libros de Ken Follet de Terror:" + libros.size());
 		  assertEquals(libros.size(),0);
 
 
@@ -137,7 +139,7 @@ public class LibroRepositoryTest {
 		List<String> categorias = Arrays. asList("Terror", "Policiaca");
 		List<Libro> libros = libroRepository.findByCategoria_nombreNotIn(categorias);
 
-		 assertEquals(libros.size(),20);
+		 assertEquals(libros.size(),22);
 
 	}
 
@@ -156,35 +158,35 @@ public class LibroRepositoryTest {
 		List<Libro> libros = libroRepository.findAll(exLibro);
 
 		 assertEquals(libros.size(),1);
-		 assertEquals(libros.get(0).getAutor().getNombre(),"Bram Stoker");
+		 assertEquals(libros.get(0).getAutores().get(0).getNombre(),"Bram Stoker");
 
 	}
 
 	@Test
-	@DisplayName("Test unitario buscar libros example autor")
-	public void testFindLibrosExampleAutor() {
+	@DisplayName("Test unitario buscar libros example categoria")
+	public void testFindLibrosExampleCategoria() {
 
-		Autor autor = Autor.builder()
+		Categoria categoria = Categoria.builder()
 									.id(4)
-									.nombre("Bram Stoker")
+									.nombre("Romantica")
 									.build();
 		Libro libro = Libro.builder()
-						.autor(autor)
+						.categoria(categoria)
 						.build();
 
 		Example<Libro> exLibro = Example.of(libro);
 
 		List<Libro> libros = libroRepository.findAll(exLibro);
-
+		log.debug("Libros de categoría Romantica:" + libros.size());
 		 assertEquals(libros.size(),1);
-		 assertEquals(libros.get(0).getTitulo(),"Dracula");
+		 assertEquals(libros.get(0).getTitulo(),"Orgullo y Prejuicio");
 
 	}
 
 	@Test
 	@DisplayName("Test unitario borrar libro")
 	public void testDeleteLibro() {
-		libroRepository.deleteById(1);
+		libroRepository.deleteById(26);
 		libroRepository.flush();
 	}
 

@@ -29,7 +29,7 @@ public class AutorRepositoryTest {
 
 		  List<Autor> autores = autorRepository.findAll();
 
-		  assertEquals(autores.size(), 15);
+		  assertEquals(autores.size(), 16);
 	}
 
 
@@ -53,17 +53,17 @@ public class AutorRepositoryTest {
 	public void testAddAutor() {
 
 		  Autor nuevoAutor = Autor.builder()
-				  							.id(15)
+				  							.id(17)
 				  							.nombre("Carlos Sisi")
 				  							.build();
 
 		  nuevoAutor = autorRepository.save(nuevoAutor);
 
 
-		  assertEquals(nuevoAutor.getId(), 15);
+		  assertEquals(nuevoAutor.getId(), 17);
 
 		  List<Autor> autores = autorRepository.findAll();
-		  assertEquals(autores.size(), 15);
+		  assertEquals(autores.size(), 17);
 	}
 
 	@Test

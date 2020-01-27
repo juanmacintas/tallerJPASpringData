@@ -18,13 +18,13 @@ public interface LibroRepository extends JpaRepository<Libro, Integer>, QueryByE
 
     public Optional<Libro> findByTitulo(String titulo);
 
-    public  List<Libro> findByAutor_nombre(String nombre);
+    public  List<Libro> findByAutores_nombre(String nombre);
 
-    public  List<Libro> findByAutor_nombreIgnoreCase(String nombre);
+    public  List<Libro> findByAutores_nombreIgnoreCase(String nombre);
 
-    public  List<Libro> findByAutor_id(Integer id);
+    public  List<Libro> findByAutores_id(Integer id);
 
-    public  List<Libro> findByAutor_nombreAndCategoria_nombre(String autor, String categoria);
+    public  List<Libro> findByAutores_nombreAndCategoria_nombre(String autor, String categoria);
 
     public  List<Libro> findByCategoria_nombreIn(List<String> categorias);
 

@@ -1,5 +1,6 @@
 package es.biblioteca.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -28,6 +29,7 @@ public class Editorial {
     /**
      * Nombre de la editorial.
      */
+    @Column(name = "nombre", nullable = false, length = 150)
     private String nombre;
 
 

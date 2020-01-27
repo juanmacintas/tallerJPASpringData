@@ -28,7 +28,7 @@ public class InfoAdicionalRepositoryTest {
 
 		  List<InfoAdicional> infoAdicional = infoAdicionalRepository.findAll();
 
-		  assertEquals(infoAdicional.size(), 24);
+		  assertEquals(infoAdicional.size(), 25);
 	}
 
 
