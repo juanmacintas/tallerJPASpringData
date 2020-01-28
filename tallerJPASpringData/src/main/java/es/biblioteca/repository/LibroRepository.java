@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.query.QueryByExampleExecutor;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +13,7 @@ import es.biblioteca.entity.Libro;
 
 
 @Repository
-public interface LibroRepository extends JpaRepository<Libro, Integer>, QueryByExampleExecutor<Libro> {
+public interface LibroRepository extends JpaRepository<Libro, Integer>, QueryByExampleExecutor<Libro>, JpaSpecificationExecutor<Libro>  {
 
     public List<Libro> findByFavoriteTrue();
 

@@ -11,9 +11,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.data.domain.Example;
+import org.springframework.data.jpa.domain.Specification;
 
 import es.biblioteca.entity.Categoria;
 import es.biblioteca.entity.Libro;
+import es.biblioteca.specification.LibroSpecification;
 import lombok.extern.slf4j.Slf4j;
 
 @DataJpaTest
@@ -188,6 +190,47 @@ public class LibroRepositoryTest {
 	public void testDeleteLibro() {
 		libroRepository.deleteById(26);
 		libroRepository.flush();
+	}
+
+	@Test
+	@DisplayName("Test unitario buscar libros specification titulo")
+	public void testFindLibrosSpecificationTitulo() {
+		String sTituloLibro = "Orgullo y Prejuicio";
+		Specification<Libro> specificationTituloLibro = Specification.where(LibroSpecification.filterTitulo(sTituloLibro));
+
+
+		List<Libro> libros = libroRepository.findAll(specificationTituloLibro);
+
+		 assertEquals(libros.size(),1);
+		 assertEquals(libros.get(0).getTitulo(),"Orgullo y Prejuicio");
+
+	}
+
+
+	@Test
+	@DisplayName("Test unitario buscar libros specification año publicacion mayor")
+	public void testFindLibrosSpecificationAnioPublicacionMayor() {
+		Integer iAnioPublicacion = 2016;
+		Specification<Libro> specificationAnioPublicacion = Specification.where(LibroSpecification.filterAnioPublicacionMayor(iAnioPublicacion));
+
+
+		List<Libro> libros = libroRepository.findAll(specificationAnioPublicacion);
+
+		 assertEquals(libros.size(),4);
+
+
+	}
+
+	@Test
+	@DisplayName("Test unitario buscar libros specification año publicacion menor o igual")
+	public void testFindLibrosSpecificationAnioPublicacionMenorIgual() {
+		Integer iAnioPublicacion = 2016;
+		Specification<Libro> specificationAnioPublicacion = Specification.where(LibroSpecification.filterAnioPublicacionMenorOIgual(iAnioPublicacion));
+
+		List<Libro> libros = libroRepository.findAll(specificationAnioPublicacion);
+
+		 assertEquals(libros.size(),21);
+
 	}
 
 }

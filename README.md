@@ -270,3 +270,165 @@ public class Autor {
 }
 ```
 Mediante el uso del mappedBy informamos que es una relación bidireccional.
+
+## Modelo de Datos
+
+Siguiendo el anterior patrón de creación de entidades y relaciones tenemos el siguiente modelo de datos para el ejemplo:
+<p align="center">
+    <img src="img/modelo.png">
+</p>
+
+## Acceso a datos/Creación de consultas
+
+Para cada una de las entidades del modelo que queramos realizar consulta será necesario crear un interfaz anotado como @Repository.
+
+ ```sh
+@Repository
+public interface InfoAdicionalRepository extends JpaRepository<InfoAdicional, Integer> {
+
+
+}
+```
+
+Este repository nos proveerá automáticamente de una serie de métodos para obtener/permistir información sobre la entidad.
+
+```sh 
+ 
+ <S extends T> S save(S entity);         -- Realiza el guardado de información sobre una entidad. Si no tiene id realizará una inserción, si tiene realizará una actualización:
+ Optional<T> findById(ID primaryKey);    -- Retorna la entidad correspondiente al id. 
+ Iterable<T> findAll();                  -- Retorna una lista con todas las entidades.
+ long count();                           -- Retorna el total de entidades.
+ void delete(T entity);                  -- Elimina la entidad
+ boolean existsById(ID primaryKey);      -- Retorna true si existe la entidad filtrando por id.
+``` 
+
+Para crear consultas personalizadas podemos hacer lo siguiente:
+
+### Usando Query Methods
+
+Estableciendo un nombre a un método describiendo que queremos obtener. Esto automáticamente ejecutará la consulta con los parámetros que hayamos establecido.
+
+```sh 
+@Repository
+public interface LibroRepository extends JpaRepository<Libro, Integer> {
+
+    public List<Libro> findByFavoriteTrue();
+
+    public Optional<Libro> findByTitulo(String titulo);
+
+    public  List<Libro> findByAutores_nombre(String nombre);
+
+    public  List<Libro> findByAutores_nombreIgnoreCase(String nombre);
+
+    public  List<Libro> findByAutores_id(Integer id);
+
+    public  List<Libro> findByAutores_nombreAndCategoria_nombre(String autor, String categoria);
+``` 
+
+### Usando Query By Example
+
+Para realizar una consulta con varios posibles combinaciones de filtros puede ser muy complejo el implementar todas las posibles métodos y filtrar por el que corresponda. Para solvertar esto, una posible solución es usar el método [Query By Example](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#query-by-example).
+Para ello, habrá que extender nuestro repositorio a QueryByExampleExecutor<T> , por lo que nos proveerá de:
+
+```sh 
+@Repository
+public interface LibroRepository extends JpaRepository<Libro, Integer>, QueryByExampleExecutor<Libro> {
+
+  <S extends T> S findOne(Example<S> example);
+
+  <S extends T> Iterable<S> findAll(Example<S> example);
+
+```
+
+Como ejemplo de uso:
+
+```sh 
+@Repository
+		Categoria categoria = Categoria.builder()
+									.id(4)
+									.nombre("Romantica")
+									.build();
+		Libro libro = Libro.builder()
+						.categoria(categoria)
+						.build();
+
+		Example<Libro> exLibro = Example.of(libro);
+
+		List<Libro> libros = libroRepository.findAll(exLibro);
+
+```
+
+### Usando @Query 
+
+Es posible definir la consulta a ejecutar al realizar la llamada a uno de los métodos de nuestro repositorio haciendo uso de [@Query](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.at-query):
+
+```sh
+@Repository
+public interface EditorialRepository extends JpaRepository<Editorial, Integer> {
+
+	@Query("select e from Editorial e where e.nombre like %?1")
+	List<Editorial> findByNombreEndsWith(String nombre);
+  
+	@Query(value = "SELECT * FROM EDITORIAL WHERE NOMBRE LIKE %?1", nativeQuery = true)
+	List<Editorial> findNativeByNombreEndsWith(String nombre);
+
+```
+
+Se puede ejecutar una query mediante JPQL o como query nativa.
+
+### Usando Specification 
+
+También es posible construir una consulta programáticamente mediante [Specification](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#specifications). 
+Para ello será necesario extender nuestro repositorio de JpaSpecificationExecutor<T>, por lo que podremos hacer uso de: 
+
+```sh
+List<T> findAll(Specification<T> spec);
+
+```
+
+Ahora, podremos construir las distintas especificaciones y combinarlas para relizar la consulta deseada.
+
+Por ejemplo, para la entidad Autor, expendemos su repository:
+
+```sh
+@Repository
+public interface AutorRepository extends JpaRepository<Autor, Integer>,JpaSpecificationExecutor<Autor> {
+
+
+}
+
+```
+
+Se crea la especificación para filtrar los autores que tengan más de un libro:
+
+```sh
+public class AutorSpecification {
+
+    public static Specification<Autor> filterMasDeUnLibro() {
+
+        return new Specification<Autor>() {
+
+            @Override
+            public Predicate toPredicate(Root<Autor> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+            	return cb.greaterThan(cb.size(root.get("libros")), 1);
+            }
+
+        };
+    }
+
+}
+
+```
+Para hacer uso de esta especificacion en una consulta.
+
+```sh
+	Specification<Autor> specificationAutor = Specification.where(AutorSpecification.filterMasDeUnLibro());
+
+	List<Autor> autores = autorRepository.findAll(specificationAutor);
+
+```
+
+## Ejemplos
+
+En este proyecto podrás encontrar ejemplos de las distintas formas de realizar consultas. Para su ejecución se han realizado JUnits para cada repositorio.
+Mediante la anotación [@DataJpaTest](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/autoconfigure/orm/jpa/DataJpaTest.html) creada para permitir las pruebas unitarias de las clases Repository. Nos permite disponer de una base de datos en memoria y tener una transacción distinta para cada método. 

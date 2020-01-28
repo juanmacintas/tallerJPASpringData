@@ -12,8 +12,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.jpa.domain.Specification;
 
 import es.biblioteca.entity.Autor;
+import es.biblioteca.specification.AutorSpecification;
 
 @DataJpaTest
 @DisplayName("JUnit Test unitario repositorio Autor")
@@ -79,5 +81,15 @@ public class AutorRepositoryTest {
       	assertTrue(exception.getMessage().contains("constraint"));
 	}
 
+	@Test
+	@DisplayName("Test unitario buscar autores specification  con mas de un libro")
+	public void testFindAutorSpecificationMasDeUnLibro() {
+		Specification<Autor> specificationAutor = Specification.where(AutorSpecification.filterMasDeUnLibro());
+
+		List<Autor> autores = autorRepository.findAll(specificationAutor);
+
+		 assertEquals(autores.size(),6);
+
+	}
 
 }
