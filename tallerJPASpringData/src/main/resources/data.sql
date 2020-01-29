@@ -87,7 +87,7 @@ INSERT INTO INFO_ADICIONAL (id, isbn, fecha_publicacion, idioma,libro) values (4
 INSERT INTO INFO_ADICIONAL (id, isbn, fecha_publicacion, idioma,libro) values (5,'8467036028', 2011, 'Español',5);
 INSERT INTO INFO_ADICIONAL (id, isbn, fecha_publicacion, idioma,libro) values (6,'8466655050', 2014, 'Español',6);
 INSERT INTO INFO_ADICIONAL (id, isbn, fecha_publicacion, idioma,libro) values (7,'8431671742', 2011, 'Español',7);
-INSERT INTO INFO_ADICIONAL (id, isbn, fecha_publicacion, idioma,libro) values (8,'1444720694', 2011, 'Inglés',8);
+INSERT INTO INFO_ADICIONAL (id, isbn, fecha_publicacion, idioma,libro) values (8,'1444720694', 2011, 'Ingles',8);
 INSERT INTO INFO_ADICIONAL (id, isbn, fecha_publicacion, idioma,libro) values (9,'8497593790', 2016, 'Español',9);
 INSERT INTO INFO_ADICIONAL (id, isbn, fecha_publicacion, idioma,libro) values (10,'8408139312', 2015, 'Español',10);
 INSERT INTO INFO_ADICIONAL (id, isbn, fecha_publicacion, idioma,libro) values (11,'8408113127', 2013, 'Español',11);

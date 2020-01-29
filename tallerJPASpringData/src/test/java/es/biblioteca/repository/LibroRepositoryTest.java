@@ -260,7 +260,7 @@ public class LibroRepositoryTest {
 	@DisplayName("Test unitario buscar libros specification nombre autor e idioma")
 	public void testFindLibrosSpecificationNombreAutorIdioma() {
 		String sAutor = "Stephen King";
-		String sIdioma = "Inglés";
+		String sIdioma = "Ingles";
 		Specification<Libro> specificationNombreAutorIdioma = Specification.where(
 													LibroSpecification.filterAutor(sAutor)
 													  .and(LibroSpecification.filterIdioma(sIdioma))
