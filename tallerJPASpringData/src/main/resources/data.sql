@@ -15,6 +15,8 @@ INSERT INTO AUTOR (id, nombre) values (13, 'Robert Kirkman');
 INSERT INTO AUTOR (id, nombre) values (14, 'J.R.R. Tolkien');
 INSERT INTO AUTOR (id, nombre) values (15, 'Stieg Larsson');
 INSERT INTO AUTOR (id, nombre) values (16, 'Jane Austen');
+INSERT INTO AUTOR (id, nombre) values (17, 'Michael Connelly');
+INSERT INTO AUTOR (id, nombre) values (18, 'Helena Martin');
 --CATEGORIAS
 INSERT INTO CATEGORIA (id, nombre) values (1,'Ciencia Ficción');
 INSERT INTO CATEGORIA (id, nombre) values (2,'Novela Negra');
@@ -74,6 +76,7 @@ INSERT INTO LIBRO (id, titulo, descripcion, categoria_id, editorial, favorite) v
 INSERT INTO LIBRO (id, titulo, descripcion, categoria_id, editorial, favorite) values (24,'El Hobbit','Descripción de El Hobbit', 11, 5, false);
 INSERT INTO LIBRO (id, titulo, descripcion, categoria_id, editorial, favorite) values (25,'Orgullo y Prejuicio','Descripción de Orgullo y Prejuicio', 4, 3, false);
 INSERT INTO LIBRO (id, titulo, descripcion, categoria_id, editorial, favorite) values (26,'Los hombres que no amaban a las mujeres','Descripción de Los hombres que no amaban a las mujeres', 2, 9, false);
+INSERT INTO LIBRO (id, titulo, descripcion, categoria_id, editorial, favorite) values (27,'El eco negro','Descripción de el eco negro', 8, 3, false);
 
 
 -- INFORMACION ADICIONAL
@@ -102,6 +105,7 @@ INSERT INTO INFO_ADICIONAL (id, isbn, fecha_publicacion, idioma,libro) values (2
 INSERT INTO INFO_ADICIONAL (id, isbn, fecha_publicacion, idioma,libro) values (23,'8445000683', 2012, 'Español',23);
 INSERT INTO INFO_ADICIONAL (id, isbn, fecha_publicacion, idioma,libro) values (24,'8467909226', 2013, 'Español',24);
 INSERT INTO INFO_ADICIONAL (id, isbn, fecha_publicacion, idioma,libro) values (25,'6079723956', 2018, 'Español',25);
+INSERT INTO INFO_ADICIONAL (id, isbn, fecha_publicacion, idioma,libro) values (26,'8416859221', 2018, 'Español',27);
 
 -- RELACION AUTOR_LIBRO
 INSERT INTO AUTOR_LIBRO (libro_id, autor_id) values (1, 1);
@@ -130,4 +134,6 @@ INSERT INTO AUTOR_LIBRO (libro_id, autor_id) values (23, 14);
 INSERT INTO AUTOR_LIBRO (libro_id, autor_id) values (24, 14);
 INSERT INTO AUTOR_LIBRO (libro_id, autor_id) values (25, 16);
 INSERT INTO AUTOR_LIBRO (libro_id, autor_id) values (26, 15);
+INSERT INTO AUTOR_LIBRO (libro_id, autor_id) values (27, 17);
+INSERT INTO AUTOR_LIBRO (libro_id, autor_id) values (27, 18);
 

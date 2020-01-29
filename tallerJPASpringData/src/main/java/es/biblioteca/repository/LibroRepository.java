@@ -34,4 +34,6 @@ public interface LibroRepository extends JpaRepository<Libro, Integer>, QueryByE
     public List<Libro> findByEditorial_nombreStartsWith(String editorial);
 
     public List<Libro> findByTituloLike(String titulo);
+
+    public Optional<Libro> findFirstByOrderByIdDesc();
 }

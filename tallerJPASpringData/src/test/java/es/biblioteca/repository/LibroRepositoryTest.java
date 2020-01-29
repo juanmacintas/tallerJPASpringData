@@ -33,7 +33,7 @@ public class LibroRepositoryTest {
 
 		  List<Libro> libros = libroRepository.findAll();
 
-		  assertEquals(libros.size(),26);
+		  assertEquals(libros.size(),27);
 	}
 
 
@@ -131,7 +131,7 @@ public class LibroRepositoryTest {
 		List<String> categorias = Arrays. asList("Terror", "Policiaca");
 		List<Libro> libros = libroRepository.findByCategoria_nombreIn(categorias);
 
-		 assertEquals(libros.size(),4);
+		 assertEquals(libros.size(),5);
 
 	}
 
@@ -216,7 +216,7 @@ public class LibroRepositoryTest {
 
 		List<Libro> libros = libroRepository.findAll(specificationAnioPublicacion);
 
-		 assertEquals(libros.size(),4);
+		 assertEquals(libros.size(),5);
 
 
 	}
@@ -230,6 +230,55 @@ public class LibroRepositoryTest {
 		List<Libro> libros = libroRepository.findAll(specificationAnioPublicacion);
 
 		 assertEquals(libros.size(),21);
+
+	}
+
+	@Test
+	@DisplayName("Test unitario buscar libros specification mas de un autor")
+	public void testFindLibrosSpecificationMasDeUnAutor() {
+		Specification<Libro> specificationMasDeUnAutor = Specification.where(LibroSpecification.filterMasDeUnAutor());
+
+		List<Libro> libros = libroRepository.findAll(specificationMasDeUnAutor);
+
+		 assertEquals(libros.size(),1);
+
+	}
+
+	@Test
+	@DisplayName("Test unitario buscar libros specification nombre autor")
+	public void testFindLibrosSpecificationNombreAutor() {
+		String sAutor = "Stephen King";
+		Specification<Libro> specificationNombreAutor = Specification.where(LibroSpecification.filterAutor(sAutor));
+
+		List<Libro> libros = libroRepository.findAll(specificationNombreAutor);
+
+		 assertEquals(libros.size(),2);
+
+	}
+
+	@Test
+	@DisplayName("Test unitario buscar libros specification nombre autor e idioma")
+	public void testFindLibrosSpecificationNombreAutorIdioma() {
+		String sAutor = "Stephen King";
+		String sIdioma = "Inglés";
+		Specification<Libro> specificationNombreAutorIdioma = Specification.where(
+													LibroSpecification.filterAutor(sAutor)
+													  .and(LibroSpecification.filterIdioma(sIdioma))
+													  );
+
+		List<Libro> libros = libroRepository.findAll(specificationNombreAutorIdioma);
+
+		 assertEquals(libros.size(),1);
+
+	}
+
+	@Test
+	@DisplayName("Test unitario buscar libro ordenado por ID descendiente")
+	public void testFindLibroTopOrderById() {
+		Optional<Libro> libro = libroRepository.findFirstByOrderByIdDesc();
+
+		  assertEquals(libro.isPresent(), true);
+		  assertEquals(libro.get().getId(),27);
 
 	}
 
