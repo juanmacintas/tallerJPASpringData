@@ -55,4 +55,16 @@ public class EditorialRepositoryTest {
 		  assertEquals(editoriales.size(), 2);
 
 	}
+
+	@Test
+	@DisplayName("Test unitario buscar por nombre editorial named parameter")
+	public void testFindNombreNamedParameter() {
+
+		  Editorial editorial = editorialRepository.findNamedParameterByName("Minotauro");
+
+		  assertEquals(editorial.getId(), 5);
+
+
+	}
+
 }
