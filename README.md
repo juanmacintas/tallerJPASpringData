@@ -161,6 +161,7 @@ public class Libro {
 
 }
 ```
+
 ####  Relaciones @OneToMany 
 
 En las relaciones Uno a Muchos (@OneToMany) tenemos un objeto principal y una colección de objetos de otra Entidad relacionados directamente.
@@ -431,4 +432,5 @@ Para hacer uso de esta especificacion en una consulta.
 ## Ejemplos
 
 En este proyecto podrás encontrar ejemplos de las distintas formas de realizar consultas. Para su ejecución se han realizado JUnits para cada repositorio.
-Mediante la anotación [@DataJpaTest](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/autoconfigure/orm/jpa/DataJpaTest.html) creada para permitir las pruebas unitarias de las clases Repository. Nos permite disponer de una base de datos en memoria y tener una transacción distinta para cada método. 
+Mediante la anotación [@DataJpaTest](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/autoconfigure/orm/jpa/DataJpaTest.html) creada para permitir las pruebas unitarias de las clases Repository. Nos permite disponer de una base de datos en memoria y tener una transacción distinta para cada método.
+Para la carga de los datos en las pruebas se ha hecho uso de la librería [Database Rider](https://github.com/database-rider/database-rider) que permite hacer uso de un determinado juego de datos para cada uno de los test. 

@@ -1,0 +1,131 @@
+Info_Adicional:
+  - id: 1
+    isbn: "8466341781"
+    fecha_publicacion: 2017
+    idioma: "Español"
+    libro: 1
+  - id: 2
+    isbn: "8408169459"
+    fecha_publicacion: 2017
+    idioma: "Español"
+    libro: 2
+  - id: 3
+    isbn: "0000000000"
+    fecha_publicacion: 2016
+    idioma: "Español"
+    libro: 3
+  - id: 4
+    isbn: "0099560437"
+    fecha_publicacion: 2012
+    idioma: "Español"
+    libro: 4
+  - id: 5
+    isbn: "8467036028"
+    fecha_publicacion: 2011
+    idioma: "Español"
+    libro: 5
+  - id: 6
+    isbn: "8466655050"
+    fecha_publicacion: 2014
+    idioma: "Español"
+    libro: 6
+  - id: 7
+    isbn: "8431671742"
+    fecha_publicacion: 2011
+    idioma: "Español"
+    libro: 7
+  - id: 8
+    isbn: "1444720694"
+    fecha_publicacion: 2011
+    idioma: "Ingles"
+    libro: 8
+  - id: 9
+    isbn: "8497593790"
+    fecha_publicacion: 2016
+    idioma: "Español"
+    libro: 9
+  - id: 10
+    isbn: "8408139312"
+    fecha_publicacion: 2015
+    idioma: "Español"
+    libro: 10
+  - id: 11
+    isbn: "8408113127"
+    fecha_publicacion: 2013
+    idioma: "Español"
+    libro: 11
+  - id: 12
+    isbn: "8422616467"
+    fecha_publicacion: 1986
+    idioma: "Español"
+    libro: 12
+  - id: 13
+    isbn: "8498722411"
+    fecha_publicacion: 2010
+    idioma: "Español"
+    libro: 13
+  - id: 14
+    isbn: "8849759312"
+    fecha_publicacion: 2014
+    idioma: "Español"
+    libro: 14
+  - id: 15
+    isbn: "8499893732"
+    fecha_publicacion: 2019
+    idioma: "Español"
+    libro: 15
+  - id: 16
+    isbn: "8435034828"
+    fecha_publicacion: 2007
+    idioma: "Español"
+    libro: 16
+  - id: 17
+    isbn: "849908320X"
+    fecha_publicacion: 2010
+    idioma: "Español"
+    libro: 17
+  - id: 18
+    isbn: "846840277X"
+    fecha_publicacion: 2010
+    idioma: "Español"
+    libro: 18
+  - id: 19
+    isbn: "8468402788"
+    fecha_publicacion: 2010
+    idioma: "Español"
+    libro: 19
+  - id: 20
+    isbn: "8468477680"
+    fecha_publicacion: 2012
+    idioma: "Español"
+    libro: 20
+  - id: 21
+    isbn: "8445000667"
+    fecha_publicacion: 2012
+    idioma: "Español"
+    libro: 21   
+  - id: 22
+    isbn: "8445000675"
+    fecha_publicacion: 2012
+    idioma: "Español"
+    libro: 22
+  - id: 23
+    isbn: "8445000683"
+    fecha_publicacion: 2012
+    idioma: "Español"
+    libro: 23   
+  - id: 24
+    isbn: "8467909226"
+    fecha_publicacion: 2013
+    idioma: "Español"
+    libro: 24   
+  - id: 25
+    isbn: "6079723956"
+    fecha_publicacion: 2018
+    idioma: "Español"
+    libro: 25
+  - id: 26
+    isbn: "8416859221"
+    fecha_publicacion: 2018
+    idioma: "Español"
+    libro: 27

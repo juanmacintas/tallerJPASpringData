@@ -1,0 +1,57 @@
+Autor_Libro:
+  - libro_id: 1
+    autor_id: 1
+  - libro_id: 2
+    autor_id: 2
+  - libro_id: 3
+    autor_id: 3
+  - libro_id: 4
+    autor_id: 8
+  - libro_id: 5
+    autor_id: 4
+  - libro_id: 6
+    autor_id: 6
+  - libro_id: 7
+    autor_id: 5
+  - libro_id: 8
+    autor_id: 7
+  - libro_id: 9
+    autor_id: 7
+  - libro_id: 10
+    autor_id: 9
+  - libro_id: 11
+    autor_id: 9
+  - libro_id: 12
+    autor_id: 10
+  - libro_id: 13
+    autor_id: 11
+  - libro_id: 14
+    autor_id: 1
+  - libro_id: 15
+    autor_id: 1
+  - libro_id: 16
+    autor_id: 12
+  - libro_id: 17
+    autor_id: 12
+  - libro_id: 18
+    autor_id: 13
+  - libro_id: 19
+    autor_id: 13
+  - libro_id: 20
+    autor_id: 13
+  - libro_id: 21
+    autor_id: 14
+  - libro_id: 22
+    autor_id: 14
+  - libro_id: 23
+    autor_id: 14
+  - libro_id: 24
+    autor_id: 14
+  - libro_id: 25
+    autor_id: 16
+  - libro_id: 26
+    autor_id: 15
+  - libro_id: 27
+    autor_id: 17
+  - libro_id: 27
+    autor_id: 18    

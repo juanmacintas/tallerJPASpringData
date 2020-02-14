@@ -1,0 +1,57 @@
+Autor:
+  - id: 1
+    nombre: "Ken Follett"
+
+Categoria:
+  - id: 10
+    nombre : "Ficcion Historica"    
+
+Editorial:
+  - id: 1
+    nombre : "Planeta"
+  - id: 2
+    nombre: "B DE BOOKS"   
+Libro:
+  - id: 1
+    titulo: "Los Pilares de la Tierra"
+    descripcion: "Descripción de los Pilares de la Tierra"
+    categoria_id: 10
+    editorial: 1
+    favorite: true
+  - id: 14
+    titulo: "Triple"
+    descripcion: "Descripción de Triple"
+    categoria_id: 10
+    editorial: 2
+    favorite: false
+  - id: 15
+    titulo: "Un Mundo Sin Fin"
+    descripcion: "Descripción de Un Mundo Sin Fin"
+    categoria_id: 10
+    editorial: 2
+    favorite: false
+    
+Autor_Libro:
+  - libro_id: 1
+    autor_id: 1
+  - libro_id: 14
+    autor_id: 1
+  - libro_id: 15
+    autor_id: 1
+
+Info_Adicional:
+  - id: 1
+    isbn: "8466341781"
+    fecha_publicacion: 2017
+    idioma: "Español"
+    libro: 1
+  - id: 14
+    isbn: "8849759312"
+    fecha_publicacion: 2014
+    idioma: "Español"
+    libro: 14
+  - id: 15
+    isbn: "8499893732"
+    fecha_publicacion: 2019
+    idioma: "Español"
+    libro: 15

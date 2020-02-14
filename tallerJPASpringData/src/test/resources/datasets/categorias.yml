@@ -1,0 +1,23 @@
+Categoria:
+  - id: 1
+    nombre: "Ciencia Ficción"
+  - id: 2
+    nombre: "Novela Negra"
+  - id: 3
+    nombre: "Terror"
+  - id: 4
+    nombre: "Romantica"
+  - id: 5
+    nombre: "Ensayo"
+  - id: 6
+    nombre: "Cómic"
+  - id: 7
+    nombre: "Suspense"
+  - id: 8
+    nombre: "Policiaca"
+  - id: 9
+    nombre: "Aventuras"
+  - id: 10
+    nombre: "Ficcion Historica"
+  - id: 11
+    nombre: "Fantasía"

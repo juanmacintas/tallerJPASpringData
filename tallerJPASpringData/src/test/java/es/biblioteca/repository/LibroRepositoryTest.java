@@ -13,6 +13,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.domain.Specification;
 
+import com.github.database.rider.core.api.dataset.DataSet;
+import com.github.database.rider.junit5.api.DBRider;
+
 import es.biblioteca.entity.Categoria;
 import es.biblioteca.entity.Libro;
 import es.biblioteca.specification.LibroSpecification;
@@ -20,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @DataJpaTest
 @Slf4j
+@DBRider
 @DisplayName("JUnit Test unitario repositorio Libro")
 public class LibroRepositoryTest {
 
@@ -28,6 +32,7 @@ public class LibroRepositoryTest {
 
 
 	@Test
+	@DataSet(value = "autores.yml, categorias.yml, editoriales.yml, libros.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar todos")
 	public void testFindAll() {
 
@@ -38,6 +43,7 @@ public class LibroRepositoryTest {
 
 
 	@Test
+	@DataSet(value = "autorKenFollet.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar por id")
 	public void testFindById() {
 
@@ -49,6 +55,7 @@ public class LibroRepositoryTest {
 	}
 
 	@Test
+	@DataSet(value = "autores.yml, categorias.yml, editoriales.yml, libros.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar libros favoritos")
 	public void testFindFavoritos() {
 		  List<Libro> libros = libroRepository.findByFavoriteTrue();
@@ -58,6 +65,7 @@ public class LibroRepositoryTest {
 	}
 
 	@Test
+	@DataSet(value = "autorKenFollet.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar libro por titulo")
 	public void testFindByTitulo() {
 		Optional<Libro> libro = libroRepository.findByTitulo("Los Pilares de la Tierra");
@@ -67,6 +75,7 @@ public class LibroRepositoryTest {
 	}
 
 	@Test
+	@DataSet(value = "autorKenFollet.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar libros nombre de autor")
 	public void testFindLibrosNombreAutor() {
 		  List<Libro> libros = libroRepository.findByAutores_nombre("Ken Follett");
@@ -76,6 +85,7 @@ public class LibroRepositoryTest {
 	}
 
 	@Test
+	@DataSet(value = "autorKenFollet.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar libros nombre de autor Ignore Case")
 	public void testFindLibrosNombreAutorIgnoreCase() {
 		  List<Libro> libros = libroRepository.findByAutores_nombreIgnoreCase("ken follett");
@@ -85,6 +95,7 @@ public class LibroRepositoryTest {
 	}
 
 	@Test
+	@DataSet(value = "autorKenFollet.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar libros id de autor")
 	public void testFindLibrosIdAutor() {
 		  List<Libro> libros = libroRepository.findByAutores_id(1);
@@ -94,6 +105,7 @@ public class LibroRepositoryTest {
 	}
 
 	@Test
+	@DataSet(value = "autorKenFollet.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar libros nombre de autor y categoria")
 	public void testFindLibrosNombreAutorCategoria() {
 		  List<Libro> libros = libroRepository.findByAutores_nombreAndCategoria_nombre("Ken Follett", "Ficcion Historica");
@@ -108,6 +120,7 @@ public class LibroRepositoryTest {
 	}
 
 	@Test
+	@DataSet(value = "autores.yml, categorias.yml, editoriales.yml, libros.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar libros nombre de editorial")
 	public void testFindLibrosNombreEditorial() {
 		  List<Libro> libros = libroRepository.findByEditorial_nombreStartsWith("Planeta");
@@ -117,6 +130,7 @@ public class LibroRepositoryTest {
 	}
 
 	@Test
+	@DataSet(value = "autores.yml, categorias.yml, editoriales.yml, libros.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar libros titulo like")
 	public void testFindLibrosTituloLike() {
 		  List<Libro> libros = libroRepository.findByTituloLike("%anillos%");
@@ -126,6 +140,7 @@ public class LibroRepositoryTest {
 	}
 
 	@Test
+	@DataSet(value = "autores.yml, categorias.yml, editoriales.yml, libros.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar libros cateogorias")
 	public void testFindLibrosCategorias() {
 		List<String> categorias = Arrays. asList("Terror", "Policiaca");
@@ -136,6 +151,7 @@ public class LibroRepositoryTest {
 	}
 
 	@Test
+	@DataSet(value = "autores.yml, categorias.yml, editoriales.yml, libros.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar libros cateogorias not")
 	public void testFindLibrosCategoriasNot() {
 		List<String> categorias = Arrays. asList("Terror", "Policiaca");
@@ -147,6 +163,7 @@ public class LibroRepositoryTest {
 
 
 	@Test
+	@DataSet(value = "autores.yml, categorias.yml, editoriales.yml, libros.yml, autores_libros.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar libros example titulo")
 	public void testFindLibrosExampleTitulo() {
 
@@ -165,6 +182,7 @@ public class LibroRepositoryTest {
 	}
 
 	@Test
+	@DataSet(value = "autores.yml, categorias.yml, editoriales.yml, libros.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar libros example categoria")
 	public void testFindLibrosExampleCategoria() {
 
@@ -186,6 +204,7 @@ public class LibroRepositoryTest {
 	}
 
 	@Test
+	@DataSet(value = "autores.yml, categorias.yml, editoriales.yml, libros.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario borrar libro")
 	public void testDeleteLibro() {
 		libroRepository.deleteById(26);
@@ -193,6 +212,7 @@ public class LibroRepositoryTest {
 	}
 
 	@Test
+	@DataSet(value = "autores.yml, categorias.yml, editoriales.yml, libros.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar libros specification titulo")
 	public void testFindLibrosSpecificationTitulo() {
 		String sTituloLibro = "Orgullo y Prejuicio";
@@ -208,6 +228,7 @@ public class LibroRepositoryTest {
 
 
 	@Test
+	@DataSet(value = "autores.yml, categorias.yml, editoriales.yml, libros.yml, infoadicional.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar libros specification año publicacion mayor")
 	public void testFindLibrosSpecificationAnioPublicacionMayor() {
 		Integer iAnioPublicacion = 2016;
@@ -222,6 +243,7 @@ public class LibroRepositoryTest {
 	}
 
 	@Test
+	@DataSet(value = "autores.yml, categorias.yml, editoriales.yml, libros.yml, infoadicional.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar libros specification año publicacion menor o igual")
 	public void testFindLibrosSpecificationAnioPublicacionMenorIgual() {
 		Integer iAnioPublicacion = 2016;
@@ -234,6 +256,7 @@ public class LibroRepositoryTest {
 	}
 
 	@Test
+	@DataSet(value = "autores.yml, categorias.yml, editoriales.yml, libros.yml, infoadicional.yml, autores_libros.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar libros specification mas de un autor")
 	public void testFindLibrosSpecificationMasDeUnAutor() {
 		Specification<Libro> specificationMasDeUnAutor = Specification.where(LibroSpecification.filterMasDeUnAutor());
@@ -245,6 +268,7 @@ public class LibroRepositoryTest {
 	}
 
 	@Test
+	@DataSet(value = "autores.yml, categorias.yml, editoriales.yml, libros.yml,autores_libros.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar libros specification nombre autor")
 	public void testFindLibrosSpecificationNombreAutor() {
 		String sAutor = "Stephen King";
@@ -257,6 +281,7 @@ public class LibroRepositoryTest {
 	}
 
 	@Test
+	@DataSet(value = "autores.yml, categorias.yml, editoriales.yml, libros.yml, infoadicional.yml, autores_libros.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar libros specification nombre autor e idioma")
 	public void testFindLibrosSpecificationNombreAutorIdioma() {
 		String sAutor = "Stephen King";
@@ -273,6 +298,7 @@ public class LibroRepositoryTest {
 	}
 
 	@Test
+	@DataSet(value = "autores.yml, categorias.yml, editoriales.yml, libros.yml,autores_libros.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar libro ordenado por ID descendiente")
 	public void testFindLibroTopOrderById() {
 		Optional<Libro> libro = libroRepository.findFirstByOrderByIdDesc();

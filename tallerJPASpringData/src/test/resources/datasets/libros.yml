@@ -1,0 +1,163 @@
+Libro:
+  - id: 1
+    titulo: "Los Pilares de la Tierra"
+    descripcion: "Descripción de los Pilares de la Tierra"
+    categoria_id: 10
+    editorial: 1
+    favorite: true
+  - id: 2
+    titulo: "Los Ritos del Agua"
+    descripcion: "Descripción de Los Ritos del Agua"
+    categoria_id: 8
+    editorial: 1
+    favorite: false
+  - id: 3
+    titulo: "El guardián de recuerdos"
+    descripcion: "Descripción de El guardián de recuerdos"
+    categoria_id: 1
+    editorial: 1
+    favorite: false
+  - id: 4
+    titulo: "Ready Player One"
+    descripcion: "Descripción de Ready Player One"
+    categoria_id: 1
+    editorial: 8
+    favorite: false
+  - id: 5
+    titulo: "Dracula"
+    descripcion: "Descripción de Dracula"
+    categoria_id: 3
+    editorial: 7
+    favorite: false
+  - id: 6
+    titulo: "El marciano"
+    descripcion: "Descripción de El marciano"
+    categoria_id: 1
+    editorial: 1
+    favorite: false
+  - id: 7
+    titulo: "Frankenstein"
+    descripcion: "Descripción de Frankenstein"
+    categoria_id: 1
+    editorial: 7
+    favorite: false
+  - id: 8
+    titulo: "Carrie"
+    descripcion: "Descripción de Carrie"
+    categoria_id: 3
+    editorial: 3
+    favorite: true
+  - id: 9
+    titulo: "It"
+    descripcion: "Descripción de It"
+    categoria_id: 3
+    editorial: 3
+    favorite: true
+  - id: 10
+    titulo: "El Paciente"
+    descripcion: "Descripción de El Paciente"
+    categoria_id: 7
+    editorial: 9
+    favorite: true
+  - id: 11
+    titulo: "La Leyenda del Ladrón"
+    descripcion: "Descripción de La Leyenda del Ladrón"
+    categoria_id: 10
+    editorial: 9
+    favorite: true
+  - id: 12
+    titulo: "El Nombre de la Rosa"
+    descripcion: "Descripción de El Nombre de la Rosa"
+    categoria_id: 10
+    editorial: 3
+    favorite: false
+  - id: 13
+    titulo: "La legión olvidada"
+    descripcion: "Descripción de La legión olvidada"
+    categoria_id: 10
+    editorial: 2
+    favorite: false
+  - id: 14
+    titulo: "Triple"
+    descripcion: "Descripción de Triple"
+    categoria_id: 10
+    editorial: 2
+    favorite: false
+  - id: 15
+    titulo: "Un Mundo Sin Fin"
+    descripcion: "Descripción de Un Mundo Sin Fin"
+    categoria_id: 10
+    editorial: 2
+    favorite: false
+  - id: 16
+    titulo: "Yo, Robot"
+    descripcion: "Descripción de Yo, Robot"
+    categoria_id: 1
+    editorial: 10
+    favorite: false
+  - id: 17
+    titulo: "Trilogía de la Fundación"
+    descripcion: "Descripción de Trilogía de la Fundación"
+    categoria_id: 1
+    editorial: 3
+    favorite: false
+  - id: 18
+    titulo: "Los muertos vivientes #1: Días pasados"
+    descripcion: "Descripción de Los muertos vivientes #1: Días pasados"
+    categoria_id: 6
+    editorial: 11
+    favorite: false
+  - id: 19
+    titulo: "Los muertos vivientes #2: Días pasados"
+    descripcion: "Descripción de Los muertos vivientes #2: Días pasados"
+    categoria_id: 6
+    editorial: 11
+    favorite: false
+  - id: 20
+    titulo: "Los muertos vivientes #3: Días pasados"
+    descripcion: "Descripción de Los muertos vivientes #3: Días pasados"
+    categoria_id: 6
+    editorial: 11
+    favorite: false
+  - id: 21
+    titulo: "El señor de los anillos: La Comunidad del anillo"
+    descripcion: "Descripción de El señor de los anillos: La Comunidad del anillo"
+    categoria_id: 11
+    editorial: 5
+    favorite: false
+  - id: 22
+    titulo: "El señor de los anillos: La Dos Torres"
+    descripcion: "Descripción de El señor de los anillos: La Dos Torres"
+    categoria_id: 11
+    editorial: 5
+    favorite: false
+  - id: 23
+    titulo: "El señor de los anillos: El Retorno del Rey"
+    descripcion: "Descripción de El señor de los anillos: El Retorno del Rey"
+    categoria_id: 11
+    editorial: 5
+    favorite: false
+  - id: 24
+    titulo: "El Hobbit"
+    descripcion: "Descripción de El Hobbit"
+    categoria_id: 11
+    editorial: 5
+    favorite: false
+  - id: 25
+    titulo: "Orgullo y Prejuicio"
+    descripcion: "Descripción de Orgullo y Prejuicio"
+    categoria_id: 4
+    editorial: 3
+    favorite: false
+  - id: 26
+    titulo: "Los hombres que no amaban a las mujeres"
+    descripcion: "Descripción de Los hombres que no amaban a las mujeres"
+    categoria_id: 2
+    editorial: 9
+    favorite: false
+  - id: 27
+    titulo: "El eco negro"
+    descripcion: "Descripción de El eco negro"
+    categoria_id: 8
+    editorial: 3
+    favorite: false
