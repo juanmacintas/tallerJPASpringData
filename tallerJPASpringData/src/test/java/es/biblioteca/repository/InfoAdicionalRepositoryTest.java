@@ -9,15 +9,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-
-import com.github.database.rider.core.api.dataset.DataSet;
-import com.github.database.rider.junit5.api.DBRider;
+import org.springframework.test.context.jdbc.Sql;
 
 import es.biblioteca.entity.InfoAdicional;
 
 
 @DataJpaTest
-@DBRider
 @DisplayName("JUnit Test unitario repositorio InfoAdicional")
 public class InfoAdicionalRepositoryTest {
 
@@ -26,7 +23,7 @@ public class InfoAdicionalRepositoryTest {
 
 
 	@Test
-	@DataSet(value = "autores.yml, categorias.yml, editoriales.yml, libros.yml, autores_libros.yml, infoadicional.yml", cleanBefore = true, cleanAfter = true)
+	@Sql("classpath:/datasets/biblioteca.sql")
 	@DisplayName("Test unitario buscar todos")
 	public void testFindAll() {
 
@@ -37,7 +34,7 @@ public class InfoAdicionalRepositoryTest {
 
 
 	@Test
-	@DataSet(value = "autores.yml, categorias.yml, editoriales.yml, libros.yml, autores_libros.yml, infoadicional.yml", cleanBefore = true, cleanAfter = true)
+	@Sql("classpath:/datasets/biblioteca.sql")
 	@DisplayName("Test unitario buscar por id")
 	public void testFindById() {
 

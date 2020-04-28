@@ -13,15 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.jpa.domain.Specification;
-
-import com.github.database.rider.core.api.dataset.DataSet;
-import com.github.database.rider.junit5.api.DBRider;
+import org.springframework.test.context.jdbc.Sql;
 
 import es.biblioteca.entity.Autor;
 import es.biblioteca.specification.AutorSpecification;
 
 @DataJpaTest
-@DBRider
 @DisplayName("JUnit Test unitario repositorio Autor")
 public class AutorRepositoryTest {
 
@@ -30,7 +27,7 @@ public class AutorRepositoryTest {
 
 
 	@Test
-	@DataSet(value = "autores.yml", cleanBefore = true, cleanAfter = true)
+	@Sql("classpath:/datasets/autores.sql")
 	@DisplayName("Test unitario buscar todos")
 	public void testFindAll() {
 
@@ -41,7 +38,7 @@ public class AutorRepositoryTest {
 
 
 	@Test
-	@DataSet(value = "autorKenFollet.yml", cleanBefore = true, cleanAfter = true)
+	@Sql("classpath:/datasets/autorKenFollet.sql")
 	@DisplayName("Test unitario buscar por id")
 	public void testFindById() {
 
@@ -57,7 +54,7 @@ public class AutorRepositoryTest {
 	}
 
 	@Test
-	@DataSet(value = "autores.yml", cleanBefore = true, cleanAfter = true)
+	@Sql("classpath:/datasets/autores.sql")
 	@DisplayName("Test unitario añadir autor")
 	public void testAddAutor() {
 
@@ -76,7 +73,7 @@ public class AutorRepositoryTest {
 	}
 
 	@Test
-	@DataSet(value = "autorKenFollet.yml", disableConstraints = false, cleanBefore = true, cleanAfter = true)
+	@Sql("classpath:/datasets/autorKenFollet.sql")
 	@DisplayName("Test unitario borrar autor")
 	public void testDeleteAutor() {
 		DataIntegrityViolationException exception = assertThrows(
@@ -90,7 +87,7 @@ public class AutorRepositoryTest {
 	}
 
 	@Test
-	@DataSet(value = "autores.yml, categorias.yml, editoriales.yml, libros.yml, autores_libros.yml", cleanBefore = true, cleanAfter = true)
+	@Sql("classpath:/datasets/biblioteca.sql")
 	@DisplayName("Test unitario buscar autores specification  con mas de un libro")
 	public void testFindAutorSpecificationMasDeUnLibro() {
 		Specification<Autor> specificationAutor = Specification.where(AutorSpecification.filterMasDeUnLibro());

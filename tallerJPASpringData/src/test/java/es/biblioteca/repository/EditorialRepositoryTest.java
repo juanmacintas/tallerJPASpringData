@@ -9,14 +9,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-
-import com.github.database.rider.core.api.dataset.DataSet;
-import com.github.database.rider.junit5.api.DBRider;
+import org.springframework.test.context.jdbc.Sql;
 
 import es.biblioteca.entity.Editorial;
 
 @DataJpaTest
-@DBRider
 @DisplayName("JUnit Test unitario repositorio Editorial")
 public class EditorialRepositoryTest {
 
@@ -25,7 +22,7 @@ public class EditorialRepositoryTest {
 
 
 	@Test
-	@DataSet(value = "editoriales.yml", cleanBefore = true, cleanAfter = true)
+	@Sql("classpath:/datasets/editoriales.sql")
 	@DisplayName("Test unitario buscar todos")
 	public void testFindAll() {
 
@@ -36,7 +33,7 @@ public class EditorialRepositoryTest {
 
 
 	@Test
-	@DataSet(value = "editoriales.yml", cleanBefore = true, cleanAfter = true)
+	@Sql("classpath:/datasets/editoriales.sql")
 	@DisplayName("Test unitario buscar por id")
 	public void testFindById() {
 
@@ -49,7 +46,7 @@ public class EditorialRepositoryTest {
 
 
 	@Test
-	@DataSet(value = "editoriales.yml", cleanBefore = true, cleanAfter = true)
+	@Sql("classpath:/datasets/editoriales.sql")
 	@DisplayName("Test unitario buscar por nombre editorial")
 	public void testFindNombre() {
 
@@ -64,7 +61,7 @@ public class EditorialRepositoryTest {
 	}
 
 	@Test
-	@DataSet(value = "editoriales.yml", cleanBefore = true, cleanAfter = true)
+	@Sql("classpath:/datasets/editoriales.sql")
 	@DisplayName("Test unitario buscar por nombre editorial named parameter")
 	public void testFindNombreNamedParameter() {
 
